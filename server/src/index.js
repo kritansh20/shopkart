@@ -10,7 +10,7 @@ import orderRoutes from './routes/orders.js';
 const app = express();
 const PORT = Number(process.env.PORT || 4000);
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:6001' }));
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));

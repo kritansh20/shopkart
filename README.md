@@ -42,7 +42,7 @@ npm run seed --prefix server
 npm run dev            # starts both servers
 ```
 
-- Frontend → <http://localhost:5173>
+- Frontend → <http://localhost:6001>
 - API → <http://localhost:4000>
 
 Vite proxies `/api/*` to the backend, so there is no API base URL to configure.
@@ -64,7 +64,7 @@ Everything has a working default, so no `.env` is needed for local development. 
 | --------------- | ----------------------- | ----------------------------- |
 | `PORT`          | `4000`                  | API port                      |
 | `JWT_SECRET`    | dev-only fallback       | Token signing secret          |
-| `CLIENT_ORIGIN` | `http://localhost:5173` | Allowed CORS origin           |
+| `CLIENT_ORIGIN` | `http://localhost:6001` | Allowed CORS origin           |
 
 > The default `JWT_SECRET` is a hardcoded development fallback. Set a real one before deploying
 > this anywhere that matters.

@@ -1,0 +1,16 @@
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
+
+projectName: bstackdemo-visual
+buildName: Percy Visual Build
+buildIdentifier: "#${BUILD_NUMBER}"
+
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Chrome
+    browserVersion: latest
+
+percy: true
+percyCaptureMode: auto
+

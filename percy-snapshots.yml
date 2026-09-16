@@ -1,0 +1,4 @@
+- name: Homepage
+  url: https://bstackdemo.com
+- name: Sign In
+  url: https://bstackdemo.com/signin

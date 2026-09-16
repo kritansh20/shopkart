@@ -11,6 +11,9 @@
     "build": "npm run build --prefix client"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "browserstack-node-sdk": "^1.70.1",
+    "concurrently": "^9.1.0",
+    "mocha": "^10.8.2",
+    "selenium-webdriver": "^4.49.0"
   }
 }

@@ -6,3 +6,6 @@ dist/
 data/
 *.sqlite
 *.sqlite3
+
+# Test Companion onboarding (local, per-machine)
+.test-companion/

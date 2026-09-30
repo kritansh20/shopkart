@@ -11,7 +11,7 @@
     "build": "npm run build --prefix client"
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0",
-    "concurrently": "^9.1.0"
+    "concurrently": "^9.1.0",
+    "playwright": "^1.63.0"
   }
 }

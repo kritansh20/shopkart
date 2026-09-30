@@ -1,7 +1,7 @@
 // @ts-check
-const { defineConfig, devices } = require('playwright/test');
 
-module.exports = defineConfig({
+/** @type {import('@playwright/test').PlaywrightTestConfig} */
+const config = {
   testDir: './tests',
   timeout: 30000,
   retries: 0,
@@ -13,7 +13,9 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { browserName: 'chromium' },
     },
   ],
-});
+};
+
+module.exports = config;

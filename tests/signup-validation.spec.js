@@ -46,8 +46,8 @@ test('T-673737455: Sign-up with already registered email shows error', async ({ 
   await page.click(SELECTORS.submitButton);
 
   // BrowserStack detects the registered email and switches the form to sign-in mode.
-  // The submit button value changes to "Sign me in" when the AJAX completes.
-  await expect(page.locator('#user_submit[value="Sign me in"]')).toBeVisible({ timeout: 30000 });
+  // The fieldset heading changes from "Create a FREE Account" to "Sign in".
+  await expect(page.getByRole('heading', { name: 'Sign in' })).toBeVisible({ timeout: 30000 });
 });
 
 // T-543369397 — Sign-up form rejects invalid email format
@@ -60,15 +60,12 @@ test('T-543369397: Sign-up form rejects invalid email format', async ({ page }) 
   // Fill email with invalid format
   await page.fill(SELECTORS.emailInput, 'invalid-email');
 
-  // Trigger blur via JS evaluate — dispatching native blur event fires the jQuery validation handler
-  // (observed in live browser: this immediately shows the email error without AJAX)
-  await page.evaluate(() => {
-    const el = document.querySelector('#user_email_login');
-    el.dispatchEvent(new Event('blur', { bubbles: true }));
-  });
+  // Press Tab to trigger blur/focusout — this fires the jQuery validation handler
+  // (observed in live browser: Tab key press immediately shows the email error)
+  await page.locator('#user_email_login').press('Tab');
 
-  // Assert email validation error is visible
-  const emailError = page.locator(SELECTORS.emailError);
+  // Assert email validation error is visible — grounded locator from live observation
+  const emailError = page.locator('#email-error').filter({ visible: true });
   await expect(emailError).toBeVisible();
   await expect(emailError).toContainText('Invalid Email');
 });

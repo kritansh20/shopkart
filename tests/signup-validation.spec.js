@@ -1,5 +1,5 @@
 // @ts-check
-const { test, expect } = require('playwright/test');
+const { test, expect } = require('@playwright/test');
 
 const SIGNUP_URL = '/users/sign_up';
 

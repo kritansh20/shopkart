@@ -13,7 +13,8 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "transform": {}
+    "transform": {},
+    "testMatch": ["**/__tests__/**/*.test.js"]
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

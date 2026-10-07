@@ -292,6 +292,20 @@ describe('GET /api/orders — order history', () => {
     expect(ids).not.toContain(otherOrderId);
   });
 
+  it('fresh user with no orders — returns 200 with an empty orders array', async () => {
+    const freshUser = await registerUser('no-orders');
+    createdUserEmails.push(freshUser.email);
+
+    const res = await request(app)
+      .get('/api/orders')
+      .set('Authorization', `Bearer ${freshUser.token}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty('orders');
+    expect(Array.isArray(res.body.orders)).toBe(true);
+    expect(res.body.orders).toHaveLength(0);
+  });
+
   it('requires auth — returns 401 when no token is provided', async () => {
     const res = await request(app).get('/api/orders');
 

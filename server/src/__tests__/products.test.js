@@ -234,3 +234,15 @@ describe('GET /api/products/:id', () => {
     expect(res.status).toBe(404);
   });
 });
+
+// ── Unknown sort value falls back to id-ascending ─────────────────────────────
+
+describe('GET /api/products — unknown sort value', () => {
+  it('?sort=unknown falls back to id-ascending order', async () => {
+    const res = await request(app).get('/api/products?sort=unknown_value');
+    expect(res.status).toBe(200);
+    const ids = res.body.products.map((p) => p.id);
+    const sorted = [...ids].sort((a, b) => a - b);
+    expect(ids).toEqual(sorted);
+  });
+});

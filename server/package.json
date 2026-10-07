@@ -12,8 +12,8 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "jest": {
-    "transform": {},
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transform": {}
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
